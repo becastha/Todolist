@@ -1,7 +1,6 @@
 <template>
     <div>
-        
-        <div v-for="(item, index) in index" :key="index">
+        <div v-for="(item,index) in items" :key="index">
             <list-item 
                 :item="item"
                 class="item"
@@ -14,7 +13,7 @@
 </template>
 <script>
 import listItem from './listItem'
-//import ListItem from './listItem.vue'
+import ListItem from './listItem.vue'
 
 export default {
     props:['items'],

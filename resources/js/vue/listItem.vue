@@ -5,7 +5,9 @@
             v-model="item.completed"
         />
         <span :class="[item.completed ? 'completed' : '','itemText']">{{ item.name }}</span>
-        <button @click="removeItem()" class="trashcan"></button>
+        <button @click="removeItem()" class="trashcan">
+            Del
+        </button>
            </div>
 </template>
 <script>
@@ -18,6 +20,17 @@ export default {
             })
             .then(response =>{
                 if(response.status == 200){
+                    this.$emit('itemchanged');
+                }
+            })
+            .catch(error=>{
+                console.log(error);
+            })
+        },
+        removeItem(){
+            axios.delete('api/item/' + this.item.id)
+            .then( response => {
+                if(response.status== 200){
                     this.$emit('itemchanged');
                 }
             })

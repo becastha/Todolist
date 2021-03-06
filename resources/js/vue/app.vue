@@ -2,19 +2,22 @@
     <div class="todolistContainer">
         <div class="heading">
             <h2 id="title">
-                Todo List
+               UeToMae Todo List
             </h2>
-            <add-item-form />
+            <add-item-form 
+                v-on:reloadlist="getList()"
+            />
         </div>
             <list-view 
                 :items="items"
-                v-on:realoadlist="getList()"
+                v-on:reloadlist="getList()"
             />
     </div>
 </template>
 <script>
 import addItemForm from "./addItemForm"
 import listView from "./listView"
+
 export default {
         components:{
             addItemForm,
@@ -38,7 +41,6 @@ export default {
             },
             created(){
                 this.getList();
-
             }
 }
 </script>

@@ -1,8 +1,8 @@
 <template>
     <div class="addItem">
-        <input type="text" v-model="item.name"/>
+        <input type="text" v-model="item.name" v-on:keyup.enter="addItem()"/>
         <font-awesome-icon
-            icon="plus-square"
+            icon="plus-square" 
             @click="addItem()"
             :class="[ item.name ? 'active' : 'inactive', 'plus']"
         />
@@ -16,7 +16,8 @@ export default {
                 name:""
         }
     }
-    },methods:{
+    },
+    methods:{
         addItem(){
            if(this.item.name ==''){
                return;
@@ -26,7 +27,8 @@ export default {
            })
            .then(response => {
                if(response.status == 201){
-                   this.item.name == "";
+                   this.item.name = "";
+                   this.$emit('reloadlist');
                }
            })
            .catch(error=>{
@@ -53,7 +55,7 @@ export default {
         width: 100%;
     }
     .plus{
-        font-size:20px;
+        font-size:25px;
     }
     .active{
         color:#29335C;
