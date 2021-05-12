@@ -2,7 +2,7 @@
     <div class="todolistContainer">
         <div class="heading">
             <h2 id="title">
-            Test Todo List
+            Testers Todo List
             </h2>
             <add-item-form 
                 v-on:reloadlist="getList()"
